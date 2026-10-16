@@ -1,0 +1,2 @@
+seed,incident_id,is_attack,collaborative,weighted_support,distinct_sources,decision_path
+7,inc-test,True,True,0.8,2,peer evidence

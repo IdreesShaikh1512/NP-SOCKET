@@ -37,12 +37,19 @@ def dataframe(frame, *, height=360, config=None, **kwargs):
         key = str(column).lower()
         if column in config:
             continue
-        if any(token in key for token in ("trust", "confidence", "weighted support", "score", "precision", "recall", "f1", "rate", "per-node average")):
+        if key in {"tp","tn","fp","fn"} or key.startswith(("true positives","true negatives","false positives","false negatives")):
+            config[column] = st.column_config.NumberColumn(str(column), format="%,.0f", width="small")
+        elif any(token in key for token in ("trust", "confidence", "score", "precision", "recall", "f1", "rate", "per-node average")):
             config[column] = st.column_config.ProgressColumn(str(column), min_value=0, max_value=1, format="%.3f")
         elif any(token in key for token in ("incident_id", "target_id", "node_id", "supporting node", "peer_id", "observer_id")):
             config[column] = st.column_config.TextColumn(str(column), width="medium")
         elif pd.api.types.is_numeric_dtype(source[column]):
-            config[column] = st.column_config.NumberColumn(str(column), format="%.3f", width="small")
+            numeric=source[column].dropna()
+            if not numeric.empty and pd.api.types.is_integer_dtype(numeric.dtype):
+                config[column] = st.column_config.NumberColumn(str(column), format="%,d", width="small")
+            else:
+                config[column] = st.column_config.NumberColumn(str(column), format="%.3f", width="small")
         else:
             config[column] = st.column_config.TextColumn(str(column), width="medium")
-    st.dataframe(frame, column_config=config, hide_index=True, height=height, width="stretch", **kwargs)
+    fitted_height=min(height,max(80,42+35*len(source)))
+    st.dataframe(frame, column_config=config, hide_index=True, height=fitted_height, width="stretch", **kwargs)

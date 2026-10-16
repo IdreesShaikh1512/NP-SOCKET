@@ -18,5 +18,6 @@ class ConsensusEngine:
                            f"{len(peer_sources)} distinct peer source(s), minimum {self.min_peer_sources}")
         return {"timestamp":now,"target_id":key[0],"event_type":key[1],"is_attack":decision,
                 "confidence":min(1,weight/max(1,len(sources))),"weighted_support":weight,
+                "decision_threshold":self.threshold,"min_peer_sources":self.min_peer_sources,
                 "peer_weighted_support":peer_weight,"sources":sources,"peer_sources":peer_sources,
                 "distinct_peer_sources":len(peer_sources),"explanation":explanation}

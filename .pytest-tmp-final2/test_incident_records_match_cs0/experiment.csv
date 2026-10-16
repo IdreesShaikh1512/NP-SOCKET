@@ -1,0 +1,2 @@
+seed,scenario,method,tp,tn,fp,fn,precision,recall,f1,accuracy,false_positive_rate
+7,all,collaborative,1,0,0,0,1.0,1.0,1.0,1.0,0.0

@@ -1,0 +1,96 @@
+{
+  "runs": [
+    {
+      "seed": 7,
+      "classification": {
+        "collaborative": {
+          "tp": 1,
+          "tn": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "accuracy": 1.0,
+          "false_positive_rate": 0.0
+        }
+      },
+      "decision_table": [
+        {
+          "incident_id": "inc-test",
+          "is_attack": true,
+          "collaborative": true,
+          "weighted_support": 0.8,
+          "distinct_sources": 2,
+          "decision_path": "peer evidence"
+        }
+      ],
+      "latency_table": []
+    }
+  ],
+  "summary": [
+    {
+      "method": "collaborative",
+      "metric": "tp",
+      "mean": 1.0,
+      "std": 0.0,
+      "mean_plus_minus_std": "1.0000 \u00b1 0.0000"
+    },
+    {
+      "method": "collaborative",
+      "metric": "tn",
+      "mean": 0.0,
+      "std": 0.0,
+      "mean_plus_minus_std": "0.0000 \u00b1 0.0000"
+    },
+    {
+      "method": "collaborative",
+      "metric": "fp",
+      "mean": 0.0,
+      "std": 0.0,
+      "mean_plus_minus_std": "0.0000 \u00b1 0.0000"
+    },
+    {
+      "method": "collaborative",
+      "metric": "fn",
+      "mean": 0.0,
+      "std": 0.0,
+      "mean_plus_minus_std": "0.0000 \u00b1 0.0000"
+    },
+    {
+      "method": "collaborative",
+      "metric": "precision",
+      "mean": 1.0,
+      "std": 0.0,
+      "mean_plus_minus_std": "1.0000 \u00b1 0.0000"
+    },
+    {
+      "method": "collaborative",
+      "metric": "recall",
+      "mean": 1.0,
+      "std": 0.0,
+      "mean_plus_minus_std": "1.0000 \u00b1 0.0000"
+    },
+    {
+      "method": "collaborative",
+      "metric": "f1",
+      "mean": 1.0,
+      "std": 0.0,
+      "mean_plus_minus_std": "1.0000 \u00b1 0.0000"
+    },
+    {
+      "method": "collaborative",
+      "metric": "accuracy",
+      "mean": 1.0,
+      "std": 0.0,
+      "mean_plus_minus_std": "1.0000 \u00b1 0.0000"
+    },
+    {
+      "method": "collaborative",
+      "metric": "false_positive_rate",
+      "mean": 0.0,
+      "std": 0.0,
+      "mean_plus_minus_std": "0.0000 \u00b1 0.0000"
+    }
+  ]
+}

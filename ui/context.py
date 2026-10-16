@@ -12,10 +12,10 @@ def controller():
 def page_start(title,subtitle=None):
     state=controller(); state.poll()
     snapshot=st.session_state.get("cids_settings_snapshot",{})
-    colors={"Idle":"#8B98A5","Running":"#3B82F6","Finished":"#22C55E","Error":"#EF4444"}
+    colors={"Idle":"#667085","Running":"#2563EB","Finished":"#16A34A","Error":"#DC2626"}
     left,right=st.columns([5,2],vertical_alignment="center")
     with left:
-        st.markdown(f'<div class="cids-page-title">{title}</div><div class="cids-page-description">{subtitle or ""}</div>',unsafe_allow_html=True)
+        st.markdown(f'<div class="cids-page-title">{title}</div><div class="cids-page-description">{subtitle or ""}</div><div class="cids-page-description">Simulated data — localhost only</div>',unsafe_allow_html=True)
     with right:
         @st.fragment(run_every="1s" if state.status=="Running" else None)
         def status_panel():
@@ -24,7 +24,7 @@ def page_start(title,subtitle=None):
             active=state.result or {}
             seed=active.get("seed",snapshot.get("seed","n/a"))
             scenario=active.get("scenario",snapshot.get("scenario","n/a"))
-            st.markdown(f'<div style="text-align:right"><span class="cids-status-pill" style="border-color:{colors.get(state.status,colors["Idle"])}">● {state.status}</span><div class="cids-page-description"><span class="cids-mono">seed {seed}</span> · {scenario}</div></div>',unsafe_allow_html=True)
+            st.markdown(f'<div style="text-align:right"><span class="cids-status-pill" style="border-color:{colors.get(state.status,colors["Idle"])}">{state.status}</span><div class="cids-page-description">Seed {seed} · Scenario: {scenario}</div></div>',unsafe_allow_html=True)
             if previous=="Running" and state.status!="Running": st.rerun()
         status_panel()
     if state.error: st.error(state.error)

@@ -58,7 +58,9 @@ where \(L\) is local detection, \(W\) is authenticated trust-weighted peer suppo
 
 ### Results summary
 
-Five-seed corrected comparison (seeds 7, 17, 27, 37, 47; default scenario `all`; four nodes; 100x simulation speed) is exported at `results/experiment_summary.csv`. In counts TP/TN/FP/FN, collaborative is 6/3/0/1; local-only any-node is 4/3/0/3; strict majority is 2/3/0/5; and majority among target observers is 6/2/1/1. The per-node-average baseline reports per-node averaged rates, so it intentionally has no aggregate confusion-count fields. Reproducible timing can vary slightly with socket scheduling.
+Five-seed comparison (seeds 7, 17, 27, 37, 47; scenario `all`; reference settings; 100× speed) is exported in `results/reference-comparison.csv`, with each node count's raw runs and full summaries in `results/reference-4/`, `results/reference-6/`, and `results/reference-8/`. Collaborative F1 mean ± sample standard deviation was 0.891 ± 0.053 (4 nodes), 0.667 ± 0.149 (6), and 0.527 ± 0.185 (8); false-positive rates were 0.133 ± 0.183, 0.067 ± 0.149, and 0.067 ± 0.149. The 4-node confusion counts averaged TP/TN/FP/FN = 6.0/2.6/0.4/1.0. The per-node-average baseline reports macro-averaged rates, so aggregate confusion counts are intentionally omitted. Results vary with real socket scheduling and should be read with their standard deviations.
+
+The reference workload has fixed incident windows independent of requested run duration: concentrated 5 s, coordinated 10 s, low-rate 60 s, and other labeled scenarios 10 s. Low-rate events are spread across all nodes and remain below each local threshold. A too-short requested duration is extended to fit the workload. In the all-scenario run, node-0 is designated misleading but is not an observer of the misleading incident's underlying attack. `results/reference-node-event-distribution.csv` records event counts per node; `results/reference-trust-node0-seed7.csv` contains every observer's update history for node-0.
 
 ## Scope note
 

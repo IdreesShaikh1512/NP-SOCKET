@@ -73,11 +73,12 @@ async def run_threshold_sweep(*,seeds=None,count=5,start_seed=7,thresholds=None,
 def main():
     parser=argparse.ArgumentParser(description="CIDS multi-seed and threshold-sweep experiments")
     parser.add_argument("--threshold-sweep",action="store_true"); parser.add_argument("--scenario",default="all"); parser.add_argument("--nodes",type=int,default=4); parser.add_argument("--seeds",type=int,default=5); parser.add_argument("--seed",type=int,default=7); parser.add_argument("--speedup",type=float,default=500)
+    parser.add_argument("--out",default="results",help="Directory for JSON and CSV experiment exports")
     args=parser.parse_args()
     if args.threshold_sweep:
-        result=asyncio.run(run_threshold_sweep(count=args.seeds,start_seed=args.seed,scenario=args.scenario,nodes=args.nodes,settings_options={"speedup":args.speedup}))
+        result=asyncio.run(run_threshold_sweep(count=args.seeds,start_seed=args.seed,scenario=args.scenario,nodes=args.nodes,settings_options={"speedup":args.speedup},out=args.out))
     else:
-        result=asyncio.run(run_experiments(count=args.seeds,start_seed=args.seed,scenario=args.scenario,nodes=args.nodes,settings_options={"speedup":args.speedup}))
+        result=asyncio.run(run_experiments(count=args.seeds,start_seed=args.seed,scenario=args.scenario,nodes=args.nodes,settings_options={"speedup":args.speedup},out=args.out))
     print(json.dumps({k:v for k,v in result.items() if k!="runs"},indent=2))
 
 if __name__=="__main__": main()

@@ -91,11 +91,12 @@ class IDSNode:
             key=self.correlator.add(local_evidence,self.settings.self_trust,decision_time)
             decision=self.consensus.decide(key,self.correlator.evidence(key),decision_time,observer_id=self.id,local_detected=local_detected); self.decisions.append(decision)
             payload=asdict(alert)
-            for peer,port in self.peers.items():
-                if peer==self.id: continue
+            async def deliver(peer,port):
+                if peer==self.id: return
                 if self._time.monotonic()<self.unavailable_until.get(peer,0):
-                    self.transport.failed_sends+=1; continue
+                    self.transport.failed_sends+=1; return
                 try: await self.transport.send(port,self.id,payload)
                 except (OSError,TimeoutError,ValueError): self.unavailable_until[peer]=self._time.monotonic()+1.0; self.transport.failed_sends+=1
+            await asyncio.gather(*(deliver(peer,port) for peer,port in self.peers.items()))
         return result
     async def close(self): await self.transport.close()

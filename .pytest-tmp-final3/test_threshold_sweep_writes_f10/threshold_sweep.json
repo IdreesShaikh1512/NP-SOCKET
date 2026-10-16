@@ -1,0 +1,48 @@
+{
+  "seeds": [
+    7,
+    17
+  ],
+  "rows": [
+    {
+      "decision_threshold": 0.4,
+      "min_peer_sources": 1,
+      "seed_count": 2,
+      "collaborative_f1_mean": 0.4,
+      "collaborative_f1_std": 0.0,
+      "collaborative_fpr_mean": 0.1,
+      "collaborative_fpr_std": 0.0,
+      "misleading_peer_weighted_support_mean": 0.6
+    },
+    {
+      "decision_threshold": 0.4,
+      "min_peer_sources": 2,
+      "seed_count": 2,
+      "collaborative_f1_mean": 0.4,
+      "collaborative_f1_std": 0.0,
+      "collaborative_fpr_mean": 0.2,
+      "collaborative_fpr_std": 0.0,
+      "misleading_peer_weighted_support_mean": 0.6
+    },
+    {
+      "decision_threshold": 0.6,
+      "min_peer_sources": 1,
+      "seed_count": 2,
+      "collaborative_f1_mean": 0.6,
+      "collaborative_f1_std": 0.0,
+      "collaborative_fpr_mean": 0.1,
+      "collaborative_fpr_std": 0.0,
+      "misleading_peer_weighted_support_mean": 0.6
+    },
+    {
+      "decision_threshold": 0.6,
+      "min_peer_sources": 2,
+      "seed_count": 2,
+      "collaborative_f1_mean": 0.6,
+      "collaborative_f1_std": 0.0,
+      "collaborative_fpr_mean": 0.2,
+      "collaborative_fpr_std": 0.0,
+      "misleading_peer_weighted_support_mean": 0.6
+    }
+  ]
+}

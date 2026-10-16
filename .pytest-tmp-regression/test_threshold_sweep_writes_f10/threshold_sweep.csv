@@ -1,0 +1,5 @@
+decision_threshold,min_peer_sources,seed_count,collaborative_f1_mean,collaborative_f1_std,collaborative_fpr_mean,collaborative_fpr_std,misleading_peer_weighted_support_mean
+0.4,1,2,0.4,0.0,0.1,0.0,0.6
+0.4,2,2,0.4,0.0,0.2,0.0,0.6
+0.6,1,2,0.6,0.0,0.1,0.0,0.6
+0.6,2,2,0.6,0.0,0.2,0.0,0.6
